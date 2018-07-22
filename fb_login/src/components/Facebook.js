@@ -12,6 +12,13 @@ class Facebook extends Component{
 
 	responseFacebook = response =>{
 		console.log(response)
+		this.setState({
+			isLoggedIn:true,
+			UserID:response.UserID,
+			name:response.name,
+			email:response.email,
+			picture:response.picture.data.url
+		})
 	}
 
 	componentClicked = () =>{
@@ -22,7 +29,12 @@ class Facebook extends Component{
 	render(){
 		let fbContent;
 		if (this.state.isLoggedIn){
-			fbContent = null;
+			fbContent = (
+				<div className="fb-content">
+					<img scr={this.state.picture} alt={this.state.name}/>
+					<h2> welcome {this.state.name}</h2>
+					<p> {this.state.email}</p>
+				</div>);
 		}else{
 			fbContent = (
 				<FacebookLogin
@@ -31,6 +43,8 @@ class Facebook extends Component{
 				    fields="name,email,picture"
 				    onClick={this.componentClicked}
     				callback={this.responseFacebook} 
+    				cssClass="my-facebook-button-class"
+    				icon="fa-facebook"
     		    />
     		)
 		}
