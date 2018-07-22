@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import FacebookLogin from 'react-facebook-login';
-
+import TiSocialFacebookCircular from 'react-icons/lib/ti/social-facebook-circular';
 class Facebook extends Component{
 	state={
 		isLoggedIn:false,
@@ -44,7 +44,7 @@ class Facebook extends Component{
 				    onClick={this.componentClicked}
     				callback={this.responseFacebook} 
     				cssClass="my-facebook-button-class"
-    				icon="fa-facebook"
+    				 icon={<TiSocialFacebookCircular />}
     		    />
     		)
 		}
